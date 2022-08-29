@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Python book - 12&nbsp; Pandas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<link href="./Functions.html" rel="next">
+<link href="./Matplotlib.html" rel="prev">
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="custom_css.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Pandas</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./" class="sidebar-logo-link">
+      <img src="./logo_horizontal_transparent.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Python book</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Variables_Operators.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strings</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Numbers.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Numbers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Loops.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loops and conditionals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lists</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tuples.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tuples</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Dictionaries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Dictionaries</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Files.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">File Handling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Numpy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">NumPy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Matplotlib.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Matplotlib</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pandas.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Pandas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./BioPython_Intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Introduction to BioPython</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#basic-information-about-the-dataframe" id="toc-basic-information-about-the-dataframe" class="nav-link active" data-scroll-target="#basic-information-about-the-dataframe"> <span class="header-section-number">12.1</span> Basic information about the dataframe</a></li>
+  <li><a href="#reading-data-from-a-csv-file" id="toc-reading-data-from-a-csv-file" class="nav-link" data-scroll-target="#reading-data-from-a-csv-file"> <span class="header-section-number">12.2</span> Reading data from a csv file</a></li>
+  <li><a href="#combining-dataframes---join-merge-and-concat" id="toc-combining-dataframes---join-merge-and-concat" class="nav-link" data-scroll-target="#combining-dataframes---join-merge-and-concat"> <span class="header-section-number">12.3</span> Combining dataframes - join, merge, and concat</a></li>
+  <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby"> <span class="header-section-number">12.4</span> Groupby</a>
+  <ul class="collapse">
+  <li><a href="#ploting" id="toc-ploting" class="nav-link" data-scroll-target="#ploting"> <span class="header-section-number">12.4.1</span> Ploting</a></li>
+  </ul></li>
+  <li><a href="#the-iris-dataset" id="toc-the-iris-dataset" class="nav-link" data-scroll-target="#the-iris-dataset"> <span class="header-section-number">12.5</span> The iris dataset</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Pandas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Pandas is a library that is useful for working with different types of datasets. A dataframe is a pandas object that has a variety of function to analyze and visualize data. It arranges the data in rows and columns. There are multiple ways in which a dataframe can be created. For example, a dictionary can be converted to a datafraem such that the keys become headers and values (list) are entries in the dataframe. The orientation of the dataframe by default is <code>columns</code> ie keys are considered as column header and values are rows. This behaviour can be changed using the <code>orient</code> argument. When orientation is index, an addtional argument <code>columns</code> can be used to specify column headers.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>input_dict <span class="op">=</span> {<span class="st">'Column1'</span>: [<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>,<span class="st">'E'</span>], <span class="op">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Column2'</span>:[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]}</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame.from_dict(input_dict)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame.from_dict(input_dict, orient<span class="op">=</span><span class="st">'index'</span>, columns<span class="op">=</span>[<span class="st">'Val1'</span>,<span class="st">'Val2'</span>,<span class="st">'Val3'</span>,<span class="st">'Val4'</span>,<span class="st">'Val5'</span>,])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>display(df1)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>display(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-execution_count="23">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Column1</th>
+      <th>Column2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Val1</th>
+      <th>Val2</th>
+      <th>Val3</th>
+      <th>Val4</th>
+      <th>Val5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Column1</th>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>Column2</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df2.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['Column1', 'Column2'], dtype='object')</code></pre>
+</div>
+</div>
+<section id="basic-information-about-the-dataframe" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="basic-information-about-the-dataframe"><span class="header-section-number">12.1</span> Basic information about the dataframe</h2>
+<p>Pandas offers set of commands to get some basic information about the content of dataframes. Below are some of these command along with their corresponding output.</p>
+<div class="cell quarto-layout-panel" data-execution_count="57">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Column1</th>
+      <th>Column2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>Information about this dataframe 
+df1.shape      (5, 2)
+df1.size       10
+df1.ndim       2
+df1.values     [['A' 1]
+ ['B' 2]
+ ['C' 3]
+ ['D' 4]
+ ['E' 5]]
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-data-from-a-csv-file" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="reading-data-from-a-csv-file"><span class="header-section-number">12.2</span> Reading data from a csv file</h2>
+<p>The <code>read_csv()</code> function can be used to create a dataframe from a csv file. To use one of the columns as indices for the dataframe add the <code>index_col</code> keyword attribute.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %load test.csv</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Name,Age,Country</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Sohan,<span class="dv">22</span>,India</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Sam,<span class="dv">21</span>,USA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"test.csv"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df4 <span class="op">=</span> pd.read_csv(<span class="st">"test.csv"</span>, index_col<span class="op">=</span><span class="st">"Country"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>display(df3)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>display(df4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-execution_count="77">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>India</th>
+      <td>Sohan</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>USA</th>
+      <td>Sam</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="combining-dataframes---join-merge-and-concat" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="combining-dataframes---join-merge-and-concat"><span class="header-section-number">12.3</span> Combining dataframes - join, merge, and concat</h2>
+<p>Concat is used to combine dataframes across rows or columns. Merge is used to combine dataframes on common columns or indices. Join is used to combine based on a key column or index.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_1 <span class="op">=</span> pd.DataFrame(np.random.uniform(<span class="dv">1</span>,<span class="dv">2</span>,size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>)), columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df_2 <span class="op">=</span> pd.DataFrame(np.random.uniform(<span class="dv">2</span>,<span class="dv">3</span>,size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>)), columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>display(df_1)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>display(df_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-execution_count="62">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.356623</td>
+      <td>1.477763</td>
+      <td>1.569974</td>
+      <td>1.778819</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.532714</td>
+      <td>1.464930</td>
+      <td>1.382634</td>
+      <td>1.496065</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.565586</td>
+      <td>1.537660</td>
+      <td>1.558265</td>
+      <td>1.089754</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.526300</td>
+      <td>1.392927</td>
+      <td>1.798358</td>
+      <td>1.181237</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.693383</td>
+      <td>1.225141</td>
+      <td>1.411091</td>
+      <td>1.804210</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.246880</td>
+      <td>2.632981</td>
+      <td>2.831306</td>
+      <td>2.088775</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.990886</td>
+      <td>2.369731</td>
+      <td>2.697256</td>
+      <td>2.048426</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.030963</td>
+      <td>2.141273</td>
+      <td>2.001073</td>
+      <td>2.406086</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.295191</td>
+      <td>2.721775</td>
+      <td>2.267560</td>
+      <td>2.300182</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.182948</td>
+      <td>2.941006</td>
+      <td>2.654403</td>
+      <td>2.478437</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.concat([df_1,df_2],ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>display(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.356623</td>
+      <td>1.477763</td>
+      <td>1.569974</td>
+      <td>1.778819</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.532714</td>
+      <td>1.464930</td>
+      <td>1.382634</td>
+      <td>1.496065</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.565586</td>
+      <td>1.537660</td>
+      <td>1.558265</td>
+      <td>1.089754</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.526300</td>
+      <td>1.392927</td>
+      <td>1.798358</td>
+      <td>1.181237</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.693383</td>
+      <td>1.225141</td>
+      <td>1.411091</td>
+      <td>1.804210</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.246880</td>
+      <td>2.632981</td>
+      <td>2.831306</td>
+      <td>2.088775</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2.990886</td>
+      <td>2.369731</td>
+      <td>2.697256</td>
+      <td>2.048426</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.030963</td>
+      <td>2.141273</td>
+      <td>2.001073</td>
+      <td>2.406086</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.295191</td>
+      <td>2.721775</td>
+      <td>2.267560</td>
+      <td>2.300182</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2.182948</td>
+      <td>2.941006</td>
+      <td>2.654403</td>
+      <td>2.478437</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.concat([df_1,df_2],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>display(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.356623</td>
+      <td>1.477763</td>
+      <td>1.569974</td>
+      <td>1.778819</td>
+      <td>2.246880</td>
+      <td>2.632981</td>
+      <td>2.831306</td>
+      <td>2.088775</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.532714</td>
+      <td>1.464930</td>
+      <td>1.382634</td>
+      <td>1.496065</td>
+      <td>2.990886</td>
+      <td>2.369731</td>
+      <td>2.697256</td>
+      <td>2.048426</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.565586</td>
+      <td>1.537660</td>
+      <td>1.558265</td>
+      <td>1.089754</td>
+      <td>2.030963</td>
+      <td>2.141273</td>
+      <td>2.001073</td>
+      <td>2.406086</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.526300</td>
+      <td>1.392927</td>
+      <td>1.798358</td>
+      <td>1.181237</td>
+      <td>2.295191</td>
+      <td>2.721775</td>
+      <td>2.267560</td>
+      <td>2.300182</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.693383</td>
+      <td>1.225141</td>
+      <td>1.411091</td>
+      <td>1.804210</td>
+      <td>2.182948</td>
+      <td>2.941006</td>
+      <td>2.654403</td>
+      <td>2.478437</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.concat([df_1,df_2],keys<span class="op">=</span>[<span class="st">"First"</span>,<span class="st">"Second"</span>])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>display(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">First</th>
+      <th>0</th>
+      <td>1.356623</td>
+      <td>1.477763</td>
+      <td>1.569974</td>
+      <td>1.778819</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.532714</td>
+      <td>1.464930</td>
+      <td>1.382634</td>
+      <td>1.496065</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.565586</td>
+      <td>1.537660</td>
+      <td>1.558265</td>
+      <td>1.089754</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.526300</td>
+      <td>1.392927</td>
+      <td>1.798358</td>
+      <td>1.181237</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.693383</td>
+      <td>1.225141</td>
+      <td>1.411091</td>
+      <td>1.804210</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Second</th>
+      <th>0</th>
+      <td>2.246880</td>
+      <td>2.632981</td>
+      <td>2.831306</td>
+      <td>2.088775</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.990886</td>
+      <td>2.369731</td>
+      <td>2.697256</td>
+      <td>2.048426</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.030963</td>
+      <td>2.141273</td>
+      <td>2.001073</td>
+      <td>2.406086</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.295191</td>
+      <td>2.721775</td>
+      <td>2.267560</td>
+      <td>2.300182</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.182948</td>
+      <td>2.941006</td>
+      <td>2.654403</td>
+      <td>2.478437</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>display(df_new.loc[<span class="st">"First"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.356623</td>
+      <td>1.477763</td>
+      <td>1.569974</td>
+      <td>1.778819</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.532714</td>
+      <td>1.464930</td>
+      <td>1.382634</td>
+      <td>1.496065</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.565586</td>
+      <td>1.537660</td>
+      <td>1.558265</td>
+      <td>1.089754</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.526300</td>
+      <td>1.392927</td>
+      <td>1.798358</td>
+      <td>1.181237</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.693383</td>
+      <td>1.225141</td>
+      <td>1.411091</td>
+      <td>1.804210</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Merge</strong> is used combine dataframe on one or more columns</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"test.csv"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>display(df3)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>df4 <span class="op">=</span> df3.copy(deep<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>df4.loc[<span class="dv">2</span>]<span class="op">=</span>[<span class="st">"Peter"</span>, <span class="dv">20</span>, <span class="st">"UK"</span>] </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df4.loc[<span class="bu">len</span>(df4.index)] <span class="op">=</span> [<span class="st">"Mohan"</span>, <span class="dv">25</span>, <span class="st">"India"</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>display(df4)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>df_merged1 <span class="op">=</span> pd.merge(df3,df4)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>display(df_merged1)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>df_merged2 <span class="op">=</span> pd.merge(df3,df4,on<span class="op">=</span>[<span class="st">"Country"</span>,<span class="st">"Name"</span>],<span class="op">\</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                      suffixes<span class="op">=</span>(<span class="st">'_df3'</span>, <span class="st">'_df4'</span>))</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>display(df_merged2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-panel" data-execution_count="9">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>df3</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">df4</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Peter</td>
+      <td>20</td>
+      <td>UK</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mohan</td>
+      <td>25</td>
+      <td>India</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">df_merged1</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">df_merged2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age_df3</th>
+      <th>Country</th>
+      <th>Age_df4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Join</strong> is used to combine dataframes along a specific column.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>display(df3.join(df4,lsuffix<span class="op">=</span><span class="st">'_df3'</span>, rsuffix<span class="op">=</span><span class="st">'_df4'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name_df3</th>
+      <th>Age_df3</th>
+      <th>Country_df3</th>
+      <th>Name_df4</th>
+      <th>Age_df4</th>
+      <th>Country_df4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>display(df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>display(df3.join(df4.set_index(<span class="st">"Country"</span>),on<span class="op">=</span><span class="st">"Country"</span>, lsuffix<span class="op">=</span><span class="st">'_df3'</span>, rsuffix<span class="op">=</span><span class="st">'_df4'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name_df3</th>
+      <th>Age_df3</th>
+      <th>Country</th>
+      <th>Name_df4</th>
+      <th>Age_df4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+      <td>Sohan</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Sohan</td>
+      <td>22</td>
+      <td>India</td>
+      <td>Mohan</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sam</td>
+      <td>21</td>
+      <td>USA</td>
+      <td>Sam</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>display(df3.join(df4.set_index(<span class="st">"Country"</span>),on<span class="op">=</span><span class="st">"Country"</span>, lsuffix<span class="op">=</span><span class="st">'_df3'</span>, rsuffix<span class="op">=</span><span class="st">'_df4'</span>, how<span class="op">=</span><span class="st">"outer"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name_df3</th>
+      <th>Age_df3</th>
+      <th>Country</th>
+      <th>Name_df4</th>
+      <th>Age_df4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>Sohan</td>
+      <td>22.0</td>
+      <td>India</td>
+      <td>Sohan</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>0.0</th>
+      <td>Sohan</td>
+      <td>22.0</td>
+      <td>India</td>
+      <td>Mohan</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>Sam</td>
+      <td>21.0</td>
+      <td>USA</td>
+      <td>Sam</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>NaN</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>UK</td>
+      <td>Peter</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="groupby" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="groupby"><span class="header-section-number">12.4</span> Groupby</h2>
+<p>We can create groups for same values in a column to apply a function to all rows having a particular value.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> [[<span class="st">"Sam"</span>,<span class="st">"Peter"</span>,<span class="st">"Mohan"</span>, <span class="st">"Mike"</span>], [<span class="st">"UG"</span>,<span class="st">"PG"</span>,<span class="st">"UG"</span>,<span class="st">"PG"</span>], [<span class="dv">70</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">70</span>]]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_students <span class="op">=</span> pd.DataFrame(students).T</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df_students.columns<span class="op">=</span>[<span class="st">"Name"</span>,<span class="st">"Program"</span>,<span class="st">"Marks"</span>]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>display(df_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Program</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sam</td>
+      <td>UG</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Peter</td>
+      <td>PG</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mohan</td>
+      <td>UG</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mike</td>
+      <td>PG</td>
+      <td>70</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_students.set_index(<span class="st">"Program"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>display(df_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Marks</th>
+    </tr>
+    <tr>
+      <th>Program</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>UG</th>
+      <td>Sam</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>PG</th>
+      <td>Peter</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>UG</th>
+      <td>Mohan</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>PG</th>
+      <td>Mike</td>
+      <td>70</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_students.groupby(level<span class="op">=</span><span class="st">"Program"</span>)[<span class="st">"Marks"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>Program
+PG    75.0
+UG    80.0
+Name: Marks, dtype: float64</code></pre>
+</div>
+</div>
+<section id="ploting" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="ploting"><span class="header-section-number">12.4.1</span> Ploting</h3>
+<p>Dataframe has a <code>plot()</code> function to do basic visualization. The <code>kind</code> attribute for this function can be used to change the plot type.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_col1 <span class="op">=</span> pd.DataFrame(np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">6</span>))<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df_col2 <span class="op">=</span> pd.DataFrame(np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">6</span>))<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df_comb <span class="op">=</span> pd.concat([df_col1,df_col2], axis<span class="op">=</span><span class="dv">1</span>, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>df_comb.columns <span class="op">=</span> [<span class="st">"Squares"</span>, <span class="st">"Cubes"</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>df_comb.index <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">6</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>display(df_comb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Squares</th>
+      <th>Cubes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>25</td>
+      <td>125</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="op">=</span> df_comb.plot(title<span class="op">=</span><span class="st">"Line Plot"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plot2 <span class="op">=</span> df_comb.plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Bar Plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-execution_count="11">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Pandas_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Pandas_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-iris-dataset" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="the-iris-dataset"><span class="header-section-number">12.5</span> The iris dataset</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>csv_url <span class="op">=</span> <span class="st">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the attribute information as the column names</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>col_names <span class="op">=</span> [<span class="st">'Sepal_Length'</span>,<span class="st">'Sepal_Width'</span>,<span class="st">'Petal_Length'</span>,<span class="st">'Petal_Width'</span>,<span class="st">'Class'</span>]</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span>  pd.read_csv(csv_url, names <span class="op">=</span> col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Sepal_Length</th>
+      <th>Sepal_Width</th>
+      <th>Petal_Length</th>
+      <th>Petal_Width</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>Iris-virginica</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape"</span>, iris.shape)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Shape (150, 5)
+Sepal_Length    float64
+Sepal_Width     float64
+Petal_Length    float64
+Petal_Width     float64
+Class            object
+dtype: object</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>iris.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Sepal_Length</th>
+      <th>Sepal_Width</th>
+      <th>Petal_Length</th>
+      <th>Petal_Width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>150.000000</td>
+      <td>150.000000</td>
+      <td>150.000000</td>
+      <td>150.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.843333</td>
+      <td>3.054000</td>
+      <td>3.758667</td>
+      <td>1.198667</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.828066</td>
+      <td>0.433594</td>
+      <td>1.764420</td>
+      <td>0.763161</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.300000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.100000</td>
+      <td>2.800000</td>
+      <td>1.600000</td>
+      <td>0.300000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>5.800000</td>
+      <td>3.000000</td>
+      <td>4.350000</td>
+      <td>1.300000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.400000</td>
+      <td>3.300000</td>
+      <td>5.100000</td>
+      <td>1.800000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>7.900000</td>
+      <td>4.400000</td>
+      <td>6.900000</td>
+      <td>2.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>iris.set_index(<span class="st">"Class"</span>).groupby(level<span class="op">=</span><span class="st">"Class"</span>).describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">Sepal_Length</th>
+      <th colspan="2" halign="left">Sepal_Width</th>
+      <th>...</th>
+      <th colspan="2" halign="left">Petal_Length</th>
+      <th colspan="8" halign="left">Petal_Width</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>...</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Class</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Iris-setosa</th>
+      <td>50.0</td>
+      <td>5.006</td>
+      <td>0.352490</td>
+      <td>4.3</td>
+      <td>4.800</td>
+      <td>5.0</td>
+      <td>5.2</td>
+      <td>5.8</td>
+      <td>50.0</td>
+      <td>3.418</td>
+      <td>...</td>
+      <td>1.575</td>
+      <td>1.9</td>
+      <td>50.0</td>
+      <td>0.244</td>
+      <td>0.107210</td>
+      <td>0.1</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.3</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>Iris-versicolor</th>
+      <td>50.0</td>
+      <td>5.936</td>
+      <td>0.516171</td>
+      <td>4.9</td>
+      <td>5.600</td>
+      <td>5.9</td>
+      <td>6.3</td>
+      <td>7.0</td>
+      <td>50.0</td>
+      <td>2.770</td>
+      <td>...</td>
+      <td>4.600</td>
+      <td>5.1</td>
+      <td>50.0</td>
+      <td>1.326</td>
+      <td>0.197753</td>
+      <td>1.0</td>
+      <td>1.2</td>
+      <td>1.3</td>
+      <td>1.5</td>
+      <td>1.8</td>
+    </tr>
+    <tr>
+      <th>Iris-virginica</th>
+      <td>50.0</td>
+      <td>6.588</td>
+      <td>0.635880</td>
+      <td>4.9</td>
+      <td>6.225</td>
+      <td>6.5</td>
+      <td>6.9</td>
+      <td>7.9</td>
+      <td>50.0</td>
+      <td>2.974</td>
+      <td>...</td>
+      <td>5.875</td>
+      <td>6.9</td>
+      <td>50.0</td>
+      <td>2.026</td>
+      <td>0.274650</td>
+      <td>1.4</td>
+      <td>1.8</td>
+      <td>2.0</td>
+      <td>2.3</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 32 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot3 <span class="op">=</span> iris.plot.scatter(x<span class="op">=</span><span class="st">"Sepal_Length"</span>,y<span class="op">=</span><span class="st">"Sepal_Width"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Pandas_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plot4 <span class="op">=</span> iris.set_index(<span class="st">"Class"</span>).groupby(level<span class="op">=</span><span class="st">"Class"</span>).plot.scatter(x<span class="op">=</span><span class="st">"Sepal_Length"</span>,y<span class="op">=</span><span class="st">"Petal_Length"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Pandas_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Pandas_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Pandas_files/figure-html/cell-32-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plot5 <span class="op">=</span> sns.jointplot(data<span class="op">=</span>iris,x<span class="op">=</span><span class="st">"Sepal_Length"</span>,y<span class="op">=</span><span class="st">"Petal_Length"</span>,hue<span class="op">=</span><span class="st">"Class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Pandas_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Matplotlib.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Matplotlib</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Functions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, bioinfo.guru</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/profile.php?id=100078250833738">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/bioinfo.guru/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/bioinfo-guru-68a8b7231/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bioinfo_guru">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
