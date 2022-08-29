@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Manish Datt">
-<meta name="dcterms.date" content="2022-08-30">
 
-<title>Python book</title>
+<title>Python book - Introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +20,8 @@ ul.task-list{list-style: none;}
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./intro.html" rel="next">
+<link href="./setup.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -59,7 +58,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Python book</h1>
+      <h1 class="quarto-secondary-nav-title">Introduction</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -71,11 +70,11 @@ ul.task-list{list-style: none;}
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
+      <a href="./" class="sidebar-logo-link">
       <img src="./logo_horizontal_transparent.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./index.html">Python book</a> 
+      <a href="./">Python book</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -90,12 +89,12 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">Introduction</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -177,7 +176,9 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#why-learn-programming" id="toc-why-learn-programming" class="nav-link active" data-scroll-target="#why-learn-programming">Why learn programming?</a></li>
+  <li><a href="#im-a-biologist-why-should-i-learn-to-code" id="toc-im-a-biologist-why-should-i-learn-to-code" class="nav-link" data-scroll-target="#im-a-biologist-why-should-i-learn-to-code">I’m a biologist, why should I learn to code?</a></li>
+  <li><a href="#why-learn-python" id="toc-why-learn-python" class="nav-link" data-scroll-target="#why-learn-python">Why learn Python?</a></li>
   </ul>
 </nav>
     </div>
@@ -186,38 +187,45 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Python book</h1>
+<h1 class="title d-none d-lg-block">Introduction</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Manish Datt </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 30, 2022</p>
-    </div>
-  </div>
     
   </div>
   
 
 </header>
 
-
-<section id="preface" class="level1 unnumbered">
-<p><img src="logo_final_transparent.png" title="Python book" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Preface</h1>
-<p>Start your coding journey with Python Book! This book is ideal for beginners to learn to program. Python is a modern high-level programming language that has applications in diverse fields.</p>
-<p>To learn more about Bioinformatics learning resources, please visit <a href="https://bioinfo.guru" style="font-family:Geo; color:#9c51e0; font-size:24px; text-decoration: none;">bioinfo.guru</a>.</p>
-<p>For any query or feedback related to Python Book, please reach out to the author at manish@<span style="font-family:Geo; color:#9c51e0; font-size:24px;">bioinfo.guru</span></p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Steve Jobs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Everyone in this country should learn how to program because it teaches you how to think”</p>
+</div>
+</div>
+<section id="why-learn-programming" class="level2">
+<h2 class="anchored" data-anchor-id="why-learn-programming">Why learn programming?</h2>
+<p>This is a frequently asked question that is why I should learn a programming language. There are multiple merits of having an understanding of the basic framework of computer programs. First, learning a programming language helps us develop logical skills, that’s because programming requires breaking down a problem and approaching a solution in a logical manner. All the computer algorithms are based on the idea that – understand the problem, break it down into different steps, and then go about solving the problem step by step. In the modern world everything is based on computers and having an ability to communicate with computers (via programming language) would help us understand the basis of functioning of any computer program. We’ll be able to “sense” the workflow of a program and to draw a relationship between input(s) and output(s).</p>
+</section>
+<section id="im-a-biologist-why-should-i-learn-to-code" class="level2">
+<h2 class="anchored" data-anchor-id="im-a-biologist-why-should-i-learn-to-code">I’m a biologist, why should I learn to code?</h2>
+<p>Modern Biology research is highly data intensive. Platform technologies are generating data like never before; and to parse the data we need computers. To use computers innovatively and productively, knowledge of programming is a must. Further, there are many software available for bioinformatics research; having an understanding of programming would enable us to interface with these tools in a much better and efficient manner than otherwise. To be a skilled computational biologist we need to understand the workflow that connects – concepts to algorithms to coding. One need not be an expert in all these domains but must have a basic understanding of this workflow. Once you have a vision of the big picture and you are an expert in at least one of these components then you can always collaborate with other experts to do wonderful things together.</p>
+</section>
+<section id="why-learn-python" class="level2">
+<h2 class="anchored" data-anchor-id="why-learn-python">Why learn Python?</h2>
+<p>Another frequently asked question is why should I learn Python programming Python is the modern programming language that is being actively developed. It offers all the features expected out of a high and programming language that too with a rather flat learning curve. The coding syntax is pretty much like writing in plain English so that it makes it easier for a novice to learn this programming language. This advantage is particularly applicable for researchers in the field of Biology because, conventionally, students of biology have little or no exposure to computer related subjects. So to get them started with programming, Python is an ideal choice. There are of course other advantages as well, like Python is an object oriented programming language. It’s an interpreted language i.e.&nbsp;the code is executed line by line which helps a new coder to identify and debug errors somewhat easily. Most importantly, python offers plenty of libraries to add additional functionality specific to a particular domain. For example, libraries like NumPy and Matplotlib can be used for numerical analysis and data visualization, respectively. Active development and a large user community allows exchange of ideas and speed up troubleshooting tasks.</p>
+<p>In Bioinformatics, particularly in the recent past, a lot of tools have been developed using python, e.g.&nbsp;one of the most popular structure visualization programs PyMol is developed using Python. Similarly, there are many other libraries that facilitate different kinds of analysis using biological data. Considering all these factors, the ability of code in python is definitely an asset for biologists doing data intensive research.</p>
 
 
 </section>
@@ -425,10 +433,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link">
-        <span class="nav-page-text">Introduction</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./setup.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

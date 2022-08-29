@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python book - 2&nbsp; Variables</title>
+<title>Python book - 1&nbsp; Setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,8 +83,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./Strings.html" rel="next">
-<link href="./setup.html" rel="prev">
+<link href="./Variables_Operators.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -121,7 +121,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variables</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -162,12 +162,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a>
+  <a href="./setup.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Variables_Operators.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variables</span></a>
+  <a href="./Variables_Operators.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variables</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -239,11 +239,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#operators" id="toc-operators" class="nav-link active" data-scroll-target="#operators"> <span class="header-section-number">2.1</span> Operators</a></li>
-  <li><a href="#arithmetic-operators" id="toc-arithmetic-operators" class="nav-link" data-scroll-target="#arithmetic-operators"> <span class="header-section-number">2.2</span> Arithmetic operators</a></li>
-  <li><a href="#comparison-operator" id="toc-comparison-operator" class="nav-link" data-scroll-target="#comparison-operator"> <span class="header-section-number">2.3</span> Comparison operator</a></li>
-  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators"> <span class="header-section-number">2.4</span> Logical operators</a></li>
-  <li><a href="#assignment-operators" id="toc-assignment-operators" class="nav-link" data-scroll-target="#assignment-operators"> <span class="header-section-number">2.5</span> Assignment operators</a></li>
+  <li><a href="#python-distributions" id="toc-python-distributions" class="nav-link active" data-scroll-target="#python-distributions"> <span class="header-section-number">1.1</span> Python distributions</a></li>
+  <li><a href="#interactive-development-environments" id="toc-interactive-development-environments" class="nav-link" data-scroll-target="#interactive-development-environments"> <span class="header-section-number">1.2</span> Interactive Development Environments</a></li>
+  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links"> <span class="header-section-number">1.3</span> Useful links</a></li>
   </ul>
 </nav>
     </div>
@@ -252,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variables</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></h1>
 </div>
 
 
@@ -266,297 +264,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>In programming variables refers to a “name” for a value. This “name” can have different values over the course of program and hence it is referred as a variable. The concept of variable in programming is similar to some of terms used in natural languages to refer to different things. For instance, in a classroom there are students with different <em>names</em>. Here the word <em>name</em> is a variable which has differnt <em>value</em> for each student i.e.&nbsp;their name.</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="python-distributions" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="python-distributions"><span class="header-section-number">1.1</span> Python distributions</h2>
+<p>The first thing that you need to do is to install Python. There are various distributions available online one of the such option is to download from the python offical site. <a href="https://www.anaconda.com/products/distribution">Anaconda</a> is another popular python distribution. Once you have download the executable file the installation is straight forward process.</p>
+</section>
+<section id="interactive-development-environments" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="interactive-development-environments"><span class="header-section-number">1.2</span> Interactive Development Environments</h2>
+<p>After python installation the next thing you need is a code editor. Although any text editor (such as Notepad++/vi/TextEdit) can serve this purpose but it is highly recommend to install atleat one IDE (Interactive Development Environment). The Anaconda distribution comes bundled with Jupyter (an IDE). VS Code (Visual Studio Code) is an other popular IDE among software deveplopers. The IDEs have several useful features such as syntax highlighting, code auto-completion, options to install plugin, etc. that elevate the coding experience. The figure below shows the interface for Jupyter and VS Code.</p>
+<div id="fig-IDEs" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-Jupyter" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Jupyter_screenshot.png" class="img-fluid figure-img" data-ref-parent="fig-IDEs"></p>
+<p></p><figcaption class="figure-caption">(a) Jupyter</figcaption><p></p>
+</figure>
 </div>
-<p>The above statement initializes a variable named ‘a’ with a numeric value of 2 and it is refered to as an <strong>Assignment Statement</strong>. Similarly, the statement below initializes a variable with name ‘test’ and assigns a string value of ‘Happy’</p>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> <span class="st">'Happy'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can print the value of a variable using the <code>print</code> command i.e.</p>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2
-Happy</code></pre>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-VSCode" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="VSCode_screenshot.png" class="img-fluid figure-img" data-ref-parent="fig-IDEs"></p>
+<p></p><figcaption class="figure-caption">(b) VS Code</figcaption><p></p>
+</figure>
 </div>
 </div>
-<p>The value assigned to a variable can be changed within the program. This feautre make variable very useful and are extensively used in progamming. A variable, for example, can be used to store user input.</p>
-<p>Each variable in Python has 6 properties associated with it. For now only first three are required since the last three are for advanced programmers. These properties are 1. Name 2. Value 3. Type 4. Scope 5. Life time 6. Memory location</p>
-<p>The first two properties i.e.&nbsp;name and value we have already seen above. Type for a variable refers to it’s data type i.e.&nbsp;whether the variable is an integer, float, string, boolean, etc.</p>
-<p>In Python, the type for a variable is decided at the time of initialization. This behaviour is different from languages like C where the type of the variable has to be declared explicitly. In the example above, we can change the variable ‘a’ to a non numeric value. To check the type for a particular variable, <code>type()</code> function can be used as follows.</p>
+</div>
+<p></p><figcaption class="figure-caption">Figure 1.1: Interactive Development Environments (IDEs)</figcaption><p></p>
+</figure>
+</div>
+<p>In addition to these IDEs, Google Collaboratory is an online Jupyter notebook that can be used to execute python code in the cloud.</p>
+<p>Throughout this book, the python code is shown as a code block with grey background, e.g.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">7.0</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'int'&gt;
-&lt;class 'float'&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Quick tip
 </div>
 </div>
-<p>Variable names are case sensitive, e.g.&nbsp;in the code below there are four different variables such that their name differ only in the case used for the letters.</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bat <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>BAT <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Bat <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>bAT <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bat, BAT, Bat, bAT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>4 5 6 7</code></pre>
+<div class="callout-body-container callout-body">
+<p>When you hover the mouse pointer over a code cell, there will be an option on the right to copy the contents of that cell.</p>
 </div>
 </div>
-<section id="operators" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="operators"><span class="header-section-number">2.1</span> Operators</h2>
-<p>An operator is a special symbol that instructs the compiler/interpreter to execute specific mathematical or logical operations. These symbols <em>operate</em> on set of variable or scaler or both. Operand refers to the value that operator operates on. E.g., in the equation 2+3 ‘+’ is an operator and 2 and 3 are operands.</p>
-<p>In Python there are 6 different classes of operators. These are: 1. Arithmetic operators 2. Comparison operators 3. Logical operators 4. Assignment operators 5. Bitwise operators 6. Special operators</p>
-<p>Let’s understand each of these classes through some examples</p>
 </section>
-<section id="arithmetic-operators" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="arithmetic-operators"><span class="header-section-number">2.2</span> Arithmetic operators</h2>
-<p>As the name suggests this class of operators are used to perform mathematical operation on the operands. Following is the list of arithemetic operators available in Python.</p>
+<section id="useful-links" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="useful-links"><span class="header-section-number">1.3</span> Useful links</h2>
 <table class="table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Operator Symbol</th>
-<th>Meaning</th>
-<th>Example</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: right;">Website</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">+</td>
-<td>Addition</td>
-<td>2 + 2 = 4</td>
+<td style="text-align: left;">Python website</td>
+<td style="text-align: right;"><a href="https://python.org">https://python.org</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-</td>
-<td>Subtraction</td>
-<td>5 - 2 = 3</td>
+<td style="text-align: left;">Anaconda</td>
+<td style="text-align: right;"><a href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">*</td>
-<td>Multiplication</td>
-<td>2 * 3 = 6</td>
+<td style="text-align: left;">Google Colab</td>
+<td style="text-align: right;"><a href="https://research.google.com/colaboratory/">https://research.google.com/colaboratory/</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">/</td>
-<td>Division</td>
-<td>4 / 2 = 2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">%</td>
-<td>Modulus</td>
-<td>4 % 2 = 0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">//</td>
-<td>Floor division</td>
-<td>5 // 2 = 2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">**</td>
-<td>Exponent</td>
-<td>2 ** 3 = 8</td>
+<td style="text-align: left;">VS Code</td>
+<td style="text-align: right;"><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></td>
 </tr>
 </tbody>
 </table>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (x<span class="op">+</span>y<span class="op">+</span><span class="dv">2</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (x<span class="op">-</span>y<span class="op">+</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>11
-1</code></pre>
-</div>
-</div>
-</section>
-<section id="comparison-operator" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="comparison-operator"><span class="header-section-number">2.3</span> Comparison operator</h2>
-<p>These operators are used to compare operands and the output from their operation is a boolean value i.e.&nbsp;either <code>True</code> or <code>False</code> or equivalently <code>1</code> or <code>0</code>.</p>
-<p>Following is the list of arithemetic operators available in Python.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Operator Symbol</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">&gt;</td>
-<td>Greater than</td>
-<td>3 &gt; 2 is <code>True</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">&lt;</td>
-<td>Less than</td>
-<td>3 &lt; 2 is <code>False</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">==</td>
-<td>Equal to</td>
-<td>2 == 3 is <code>False</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">!=</td>
-<td>Not equal to</td>
-<td>2 != 3 is <code>True</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">&gt;=</td>
-<td>Greater than or equal to</td>
-<td>4 &gt;= 2 is <code>True</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">&lt;=</td>
-<td>Less than or equal to</td>
-<td>5 &lt;= 2 is <code>False</code></td>
-</tr>
-</tbody>
-</table>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (x<span class="op">+</span>y <span class="op">&gt;</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
-</div>
-</div>
-</section>
-<section id="logical-operators" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="logical-operators"><span class="header-section-number">2.4</span> Logical operators</h2>
-<p>There are 3 logical operators <code>and</code>, <code>or</code>, and <code>not</code>.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Operator Symbol</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">and</td>
-<td>True if both operands are true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">or</td>
-<td>True if either of the operands is true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">not</td>
-<td>True if operands are false</td>
-</tr>
-</tbody>
-</table>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (x <span class="kw">and</span> y)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (x <span class="kw">or</span> y)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="kw">not</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>False
-True
-False</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">5</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span><span class="dv">6</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>z<span class="op">=</span><span class="dv">7</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (x<span class="op">&lt;</span>y <span class="kw">and</span> y<span class="op">&lt;</span>z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
-</div>
-</div>
-</section>
-<section id="assignment-operators" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="assignment-operators"><span class="header-section-number">2.5</span> Assignment operators</h2>
-<p>Operators in this class are used to <code>assign</code> values to variables. The syntax for using these operators is variable name followed by operator followed by the value that is to be assigned. Some of the assignment operator behave equivalent to the mathematical operation performed by arithmetic operators.</p>
-<p>Following is the list of assignment operators available in Python.</p>
-<table class="table">
-<colgroup>
-<col style="width: 45%">
-<col style="width: 27%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Operator Symbol</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">=</td>
-<td>Assign value on the right to variable on the left</td>
-<td>x = 5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">+=</td>
-<td>Increment value of the variable by value on the right</td>
-<td>x += 5 (x = x + 5)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-=</td>
-<td>Decrement value of the variable by value on the right</td>
-<td>x -= 5 (x = x - 5)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">*=</td>
-<td>Multiple value of the variable by value on the right</td>
-<td>x <em>= 5 (x = x </em> 5)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/=</td>
-<td>Divide value of the variable by value on the right</td>
-<td>x /= 5 (x = x / 5)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">%=</td>
-<td>Modulus for the value of the variable by value on the right</td>
-<td>x %= 5 (x = x % 5)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">//=</td>
-<td>Floor division of value of the variable by value on the right</td>
-<td>x //= 5 (x = x // 5)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">**=</td>
-<td>Exponent value of the variable by value on the right</td>
-<td>x **= 5 (x = x ** 5)</td>
-</tr>
-</tbody>
-</table>
-<p class="popquiz">
-<b>Quiz: </b>What would be the output of the following code <br> x = 6 <br> x **= 2 <br> print(x)
-</p>
-<div class="cell">
-<details>
-<summary>Show answer</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">36</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p class="popquiz">
-<b>Quiz: </b>What would be the output of the following code <br> x = False <br> print(type(x))
-</p>
-<div class="cell">
-<details>
-<summary>Show answer</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#output </span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;class 'bool'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 
 
 </section>
@@ -764,13 +548,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./setup.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span>
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Strings.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strings</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Variables_Operators.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
