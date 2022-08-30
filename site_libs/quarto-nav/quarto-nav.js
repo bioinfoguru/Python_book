@@ -171,7 +171,7 @@ window.document.addEventListener("DOMContentLoaded", function () {
   if (window.location.protocol !== "file:") {
     const links = window.document.querySelectorAll("a");
     for (let i = 0; i < links.length; i++) {
-      links[i].href = links[i].href.replace(/\/index\.html/, "/index.html");
+      links[i].href = links[i].href.replace("index.html/", "");
     }
 
     // Fixup any sharing links that require urls
